@@ -46,16 +46,7 @@ public class UsuarioBean implements GenericBean{
     private Integer id_tipousuario = 0;
     @Expose(deserialize = false)
     private TipousuarioBean obj_tipousuario = null;
-    @Expose(serialize = false)
-    private Integer id_estado = 0;
-    @Expose(deserialize = false)
-    private EstadoBean obj_estado = null;
-    @Expose
-    private String ciudad = "";
-    @Expose
-    private String firma = "";
-    @Expose
-    private String skin = "";
+
 
     public UsuarioBean() {
         this.id = 0;
@@ -105,61 +96,21 @@ public class UsuarioBean implements GenericBean{
         this.obj_tipousuario = obj_tipousuario;
     }
 
-    public Integer getId_estado() {
-        return id_estado;
-    }
-
-    public void setId_estado(Integer id_estado) {
-        this.id_estado = id_estado;
-    }
-
-    public EstadoBean getObj_estado() {
-        return obj_estado;
-    }
-
-    public void setObj_estado(EstadoBean obj_estado) {
-        this.obj_estado = obj_estado;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public String getFirma() {
-        return firma;
-    }
-
-    public void setFirma(String firma) {
-        this.firma = firma;
-    }
-
-    public String getSkin() {
-        return skin;
-    }
-
-    public void setSkin(String skin) {
-        this.skin = skin;
-    }
+   
 
     public String toJson(Boolean expand) {
         String strJson = "{";
         strJson += "id:" + id + ",";
         strJson += "login:" + login + ",";
         strJson += "password:" + password + ",";
-        strJson += "ciudad:" + ciudad + ",";
-        strJson += "firma:" + firma + ",";
-        strJson += "skin:" + skin + ",";
-        if (expand) {
-            strJson += "obj_estado:" + obj_estado.toJson(false) + ",";
-            strJson += "obj_tipousuario:" + obj_tipousuario.toJson(false) + ",";
-        } else {
-            strJson += "id_estado:" + id_estado + ",";
-            strJson += "id_tipousuario:" + id_tipousuario + ",";
-        }
+
+//        if (expand) {
+//            strJson += "obj_estado:" + obj_estado.toJson(false) + ",";
+//            strJson += "obj_tipousuario:" + obj_tipousuario.toJson(false) + ",";
+//        } else {
+//            strJson += "id_estado:" + id_estado + ",";
+//            strJson += "id_tipousuario:" + id_tipousuario + ",";
+//        }
         strJson += "}";
         return strJson;
     }
@@ -185,10 +136,6 @@ public class UsuarioBean implements GenericBean{
         strColumns += id + ",";
         strColumns += login + ",";
         strColumns += password + ",";
-        strColumns += ciudad + ",";
-        strColumns += firma + ",";
-        strColumns += skin + ",";
-        strColumns += id_estado + ",";
         strColumns += id_tipousuario;
 
         return strColumns;
@@ -200,10 +147,6 @@ public class UsuarioBean implements GenericBean{
         strPairs += "id=" + id + ",";
         strPairs += "login=" + login + ",";
         strPairs += "password=" + password + ",";
-        strPairs += "ciudad=" + ciudad + ",";
-        strPairs += "firma=" + firma + ",";
-        strPairs += "skin=" + skin + ",";
-        strPairs += "id_estado=" + id_estado + ",";
         strPairs += "id_tipousuario=" + id_tipousuario;
 
         return strPairs;
@@ -214,18 +157,8 @@ public class UsuarioBean implements GenericBean{
         this.setId(oResultSet.getInt("id"));
         this.setLogin(oResultSet.getString("login"));
         this.setPassword(oResultSet.getString("password"));
-        this.setCiudad(oResultSet.getString("ciudad"));
-        this.setFirma(oResultSet.getString("firma"));
-        this.setSkin(oResultSet.getString("skin"));
-        if (expand > 0) {
-            EstadoBean oEstadoBean = new EstadoBean();
-            EstadoDao oEstadoDao = new EstadoDao(pooledConnection);
-            oEstadoBean.setId(oResultSet.getInt("id_estado"));
-            oEstadoBean = oEstadoDao.get(oEstadoBean, expand - 1);
-            this.setObj_estado(oEstadoBean);
-        } else {
-            this.setId_estado(oResultSet.getInt("id_estado"));
-        }
+
+
         if (expand > 0) {
             TipousuarioBean oTipousuarioBean = new TipousuarioBean();
             TipousuarioDao oTipousuarioDao = new TipousuarioDao(pooledConnection);

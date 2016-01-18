@@ -371,14 +371,14 @@ public class UsuarioService implements TableServiceInterface, ViewServiceInterfa
         }
     }
 
-    public int sessionuserlevel() {
-        String strAnswer = null;
-        UsuarioBean oUserBean = (UsuarioBean) oRequest.getSession().getAttribute("userBean");
-        if (oUserBean == null) {
-            return 0;
-        } else {
-            return oUserBean.getId_estado();
-        }
-    }
+//    public int sessionuserlevel() {
+//        String strAnswer = null;
+//        UsuarioBean oUserBean = (UsuarioBean) oRequest.getSession().getAttribute("userBean");
+//        if (oUserBean == null) {
+//            return 0;
+//        } else {
+//            return oUserBean.getId_estado();
+//        }
+//    }
 
 }
