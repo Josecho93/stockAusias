@@ -186,12 +186,19 @@ public class ArticuloBean {
         return strPairs;
     }
 
-    @Override
-    public DocumentoBean fill(ResultSet oResultSet, Connection pooledConnection, Integer expand) throws SQLException, Exception {
-        this.setReferencia(oResultSet.getInt("referencia"));
-        this.setCategoria(oResultSet.getString("titulo"));
-        this.setNombrearticulo(oResultSet.getString("contenido"));
-        this.setCantidad(oResultSet.getInt("hits"));
 
+    public ArticuloBean fill(ResultSet oResultSet, Connection pooledConnection, Integer expand) throws SQLException, Exception {
+        this.setReferencia(oResultSet.getInt("referencia"));
+        this.setCategoria(oResultSet.getString("categoria"));
+        this.setNombrearticulo(oResultSet.getString("nombrearticulo"));
+        this.setDescripcion(oResultSet.getString("descripcion"));
+        this.setPrecio(oResultSet.getDouble("precio"));
+        this.setCantidad(oResultSet.getInt("cantidad"));
+        this.setCodigobarras(oResultSet.getInt("codigobarras"));
+        this.setColor(oResultSet.getString("color"));        
+
+   
+        return this;
     }
+
 }
