@@ -147,16 +147,15 @@ public class ArticuloBean {
 
     public String getColumns() {
         String strColumns = "";
-        strColumns += "id,";
-        strColumns += "titulo,";
-        strColumns += "contenido,";
-        strColumns += "alta,";
-        strColumns += "cambio,";
-        strColumns += "hits,";
-        strColumns += "id_usuario,";
-        strColumns += "id_tipodocumento,";
-        strColumns += "etiquetas,";
-        strColumns += "publicado,";
+        strColumns += "referencia,";
+        strColumns += "categoria,";
+        strColumns += "nombrearticulo,";
+        strColumns += "descripcion,";
+        strColumns += "precio,";
+        strColumns += "cantidad,";
+        strColumns += "codigobarras,";
+        strColumns += "color,";
+        strColumns += "marca,";
         return strColumns;
     }
 
@@ -171,20 +170,17 @@ public class ArticuloBean {
         return strColumns;
     }
 
-    @Override
-    public String toPairs() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String strPairs = "";
-        //strPairs += "referencia=" + referencia + ",";
-        strPairs += "titulo=" + EncodingUtilHelper.quotate(categoria) + ",";
-        strPairs += "contenido=" + EncodingUtilHelper.quotate(nombrearticulo) + ",";
-        strPairs += "hits=" + cantidad + ",";
-        strPairs += "id_usuario=" + id_usuario + ",";
-        strPairs += "id_tipodocumento=" + id_tipodocumento + ",";
-        strPairs += "etiquetas=" + EncodingUtilHelper.quotate(etiquetas) + ",";
-
-        return strPairs;
-    }
+// Metodo para fechas, de momento no hace falta
+//    public String toPairs() {
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//        String strPairs = "";
+//        //strPairs += "referencia=" + referencia + ",";
+//        strPairs += "titulo=" + EncodingUtilHelper.quotate(categoria) + ",";
+//        strPairs += "contenido=" + EncodingUtilHelper.quotate(nombrearticulo) + ",";
+//
+//
+//        return strPairs;
+//    }
 
 
     public ArticuloBean fill(ResultSet oResultSet, Connection pooledConnection, Integer expand) throws SQLException, Exception {
@@ -195,7 +191,9 @@ public class ArticuloBean {
         this.setPrecio(oResultSet.getDouble("precio"));
         this.setCantidad(oResultSet.getInt("cantidad"));
         this.setCodigobarras(oResultSet.getInt("codigobarras"));
-        this.setColor(oResultSet.getString("color"));        
+        this.setColor(oResultSet.getString("color"));    
+        this.setMarca(oResultSet.getString("marca"));        
+
 
    
         return this;

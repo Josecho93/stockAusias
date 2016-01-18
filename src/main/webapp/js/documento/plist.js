@@ -53,8 +53,8 @@ moduloDocumento.controller('DocumentoPListController', ['$scope', '$routeParams'
 
         $scope.ob = "documento";
         $scope.op = "plist";
-        $scope.title = "Listado de documentos";
-        $scope.icon = "fa-file-text-o";
+        $scope.title = "Listado de productos";
+        $scope.icon = "fa-archive";
         $scope.neighbourhood = 2;
 
         if (!$routeParams.page) {
