@@ -35,6 +35,7 @@ var openAusias = angular.module('myApp', [
     'Services',
     'systemControllers',
     'documentoControllers',
+    'articuloControllers',
     'usuarioControllers',    
     'tipodocumentoControllers',
     'tipousuarioControllers',
@@ -53,22 +54,33 @@ openAusias.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/documento/edit/:id', {templateUrl: 'js/documento/edit.html', controller: 'DocumentoEditController'});
         $routeProvider.when('/documento/remove/:id', {templateUrl: 'js/documento/remove.html', controller: 'DocumentoRemoveController'});
         $routeProvider.when('/documento/plist/:page?/:rpp?', {templateUrl: 'js/documento/plist.html', controller: 'DocumentoPListController'});
-
-        //------------
+//
+//        //------------
         $routeProvider.when('/usuario/view/:id', {templateUrl: 'js/usuario/view.html', controller: 'UsuarioViewController'});
         $routeProvider.when('/usuario/new/:id', {templateUrl: 'js/usuario/new.html', controller: 'UsuarioNewController'});
         $routeProvider.when('/usuario/edit/:id', {templateUrl: 'js/usuario/edit.html', controller: 'UsuarioEditController'});
         $routeProvider.when('/usuario/remove/:id', {templateUrl: 'js/usuario/remove.html',   controller: 'UsuarioRemoveController'});
         $routeProvider.when('/usuario/plist/:page?/:rpp?', {templateUrl: 'js/usuario/plist.html', controller: 'UsuarioPListController'});
         //------------
+        //
         $routeProvider.when('/tipodocumento/view/:id', {templateUrl: 'js/tipodocumento/view.html', controller: 'TipodocumentoViewController'});
         $routeProvider.when('/tipodocumento/selection/:page/:rpp', {templateUrl: 'js/tipodocumento/selection.html', controller: 'TipodocumentoSelectionController'});
         
         
+    
+        $routeProvider.when('/articulo/view/:id', {templateUrl: 'js/articulo/view.html', controller: 'ArticuloViewController'});
+        $routeProvider.when('/articulo/new', {templateUrl: 'js/articulo/new.html', controller: 'ArticuloNewController'});
+        $routeProvider.when('/articulo/edit/:id', {templateUrl: 'js/articulo/edit.html', controller: 'ArticuloEditController'});
+        $routeProvider.when('/articulo/remove/:id', {templateUrl: 'js/articulo/remove.html', controller: 'ArticuloRemoveController'});
+        $routeProvider.when('/articulo/plist/:page?/:rpp?', {templateUrl: 'js/articulo/plist.html', controller: 'ArticuloPListController'});
+
         
-        $routeProvider.when('/tipousuario/selection/:page/:rpp', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});        
-        //------------
-        $routeProvider.otherwise({redirectTo: '/'});
+        
+        
+//                    
+//        $routeProvider.when('/tipousuario/selection/:page/:rpp', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});        
+//        //------------
+//        $routeProvider.otherwise({redirectTo: '/'});
 
         //claves ajenas: usar un módulo compartido para apuntarse la url de llamada: http://stackoverflow.com/questions/12008908/how-can-i-pass-variables-between-controllers-in-angularjs
         //ejemplo claves ajenas con objeto promesa: http://stackoverflow.com/questions/14530251/angular-js-model-relationships
@@ -80,4 +92,6 @@ var moduloUsuario = angular.module('usuarioControllers', []);
 var moduloDocumento = angular.module('documentoControllers', []);
 var moduloTipodocumento = angular.module('tipodocumentoControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);
+var moduloArticulo = angular.module('articuloControllers', []);
+
 
