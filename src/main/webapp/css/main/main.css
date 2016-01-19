@@ -1110,8 +1110,9 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
-  color: #2f575d;
-  background-color: #dee1dd; }
+  /* color: #2f575d; */
+  background-color: #D0F5A9;
+  }
 
 input,
 button,

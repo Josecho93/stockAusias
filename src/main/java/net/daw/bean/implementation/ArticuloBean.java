@@ -44,6 +44,10 @@ import net.daw.helper.statics.EncodingUtilHelper;
  */
 public class ArticuloBean {
 
+    
+    @Expose
+    private Integer id;
+    
     @Expose
     private Integer referencia;
 
@@ -71,6 +75,22 @@ public class ArticuloBean {
     @Expose
     private String marca = "";
 
+    public ArticuloBean() {
+        this.id = 0;
+    }
+    
+    public ArticuloBean(Integer id) {
+        this.id = id;
+    }
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    
     public Integer getReferencia() {
         return referencia;
     }
@@ -147,6 +167,7 @@ public class ArticuloBean {
 
     public String getColumns() {
         String strColumns = "";
+        strColumns += "id,";
         strColumns += "referencia,";
         strColumns += "categoria,";
         strColumns += "nombrearticulo,";
@@ -155,12 +176,13 @@ public class ArticuloBean {
         strColumns += "cantidad,";
         strColumns += "codigobarras,";
         strColumns += "color,";
-        strColumns += "marca,";
+        strColumns += "marca";
         return strColumns;
     }
 
     public String getValues() {
         String strColumns = "";
+        strColumns += id + ",";
         strColumns += referencia + ",";
         strColumns += categoria + ",";
         strColumns += nombrearticulo + ",";
@@ -171,19 +193,21 @@ public class ArticuloBean {
     }
 
 // Metodo para fechas, de momento no hace falta
-//    public String toPairs() {
-//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//        String strPairs = "";
-//        //strPairs += "referencia=" + referencia + ",";
-//        strPairs += "titulo=" + EncodingUtilHelper.quotate(categoria) + ",";
-//        strPairs += "contenido=" + EncodingUtilHelper.quotate(nombrearticulo) + ",";
-//
-//
-//        return strPairs;
-//    }
+    public String toPairs() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String strPairs = "";
+        strPairs += "id=" + id + ",";
+        strPairs += "referencia=" + referencia + ",";
+        strPairs += "titulo=" + EncodingUtilHelper.quotate(categoria) + ",";
+        strPairs += "contenido=" + EncodingUtilHelper.quotate(nombrearticulo) + ",";
+
+
+        return strPairs;
+    }
 
 
     public ArticuloBean fill(ResultSet oResultSet, Connection pooledConnection, Integer expand) throws SQLException, Exception {
+        this.setId(oResultSet.getInt("id"));
         this.setReferencia(oResultSet.getInt("referencia"));
         this.setCategoria(oResultSet.getString("categoria"));
         this.setNombrearticulo(oResultSet.getString("nombrearticulo"));

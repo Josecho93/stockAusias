@@ -34,23 +34,25 @@ import java.util.HashMap;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import net.daw.bean.implementation.DocumentoBean;
+import net.daw.bean.implementation.ArticuloBean;
 import net.daw.bean.implementation.UsuarioBean;
 import net.daw.connection.implementation.BoneConnectionPoolImpl;
 import net.daw.connection.publicinterface.ConnectionInterface;
-import net.daw.dao.implementation.DocumentoDao;
+import net.daw.dao.implementation.ArticuloDao;
 import net.daw.helper.statics.AppConfigurationHelper;
 import static net.daw.helper.statics.AppConfigurationHelper.getSourceConnection;
 import net.daw.helper.statics.ExceptionBooster;
 import net.daw.helper.statics.FilterBeanHelper;
 import net.daw.helper.statics.JsonMessage;
 import net.daw.helper.statics.ParameterCook;
+import net.daw.service.publicinterface.TableServiceInterface;
+import net.daw.service.publicinterface.ViewServiceInterface;
 
 /**
  *
  * @author Josecho
  */
-public class ArticuloService {
+public class ArticuloService implements TableServiceInterface, ViewServiceInterface {
     
     protected HttpServletRequest oRequest = null;
 
@@ -77,8 +79,8 @@ public class ArticuloService {
             try {
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
-                DocumentoDao oDocumentoDao = new DocumentoDao(oConnection);
-                data = JsonMessage.getJson("200", Integer.toString(oDocumentoDao.getCount(alFilter)));
+                ArticuloDao oArticuloDao = new ArticuloDao(oConnection);
+                data = JsonMessage.getJson("200", Integer.toString(oArticuloDao.getCount(alFilter)));
             } catch (Exception ex) {
                 ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getCount ERROR: " + ex.getMessage()));
             } finally {
@@ -105,11 +107,11 @@ public class ArticuloService {
             try {
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
-                DocumentoDao oDocumentoDao = new DocumentoDao(oConnection);
-                DocumentoBean oDocumentoBean = new DocumentoBean(id);
-                oDocumentoBean = oDocumentoDao.get(oDocumentoBean, AppConfigurationHelper.getJsonDepth());
+                ArticuloDao oArticuloDao = new ArticuloDao(oConnection);
+                ArticuloBean oArticuloBean = new ArticuloBean(id);
+                oArticuloBean = oArticuloDao.get(oArticuloBean, AppConfigurationHelper.getJsonDepth());
                 Gson gson = AppConfigurationHelper.getGson();
-                data = JsonMessage.getJson("200", AppConfigurationHelper.getGson().toJson(oDocumentoBean));
+                data = JsonMessage.getJson("200", AppConfigurationHelper.getGson().toJson(oArticuloBean));
             } catch (Exception ex) {
                 ExceptionBooster.boost(new Exception(this.getClass().getName() + ":get ERROR: " + ex.getMessage()));
             } finally {
@@ -139,8 +141,8 @@ public class ArticuloService {
             try {
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
-                DocumentoDao oDocumentoDao = new DocumentoDao(oConnection);
-                ArrayList<DocumentoBean> arrBeans = oDocumentoDao.getAll(alFilter, hmOrder, AppConfigurationHelper.getJsonDepth());
+                ArticuloDao oArticuloDao = new ArticuloDao(oConnection);
+                ArrayList<ArticuloBean> arrBeans = oArticuloDao.getAll(alFilter, hmOrder, AppConfigurationHelper.getJsonDepth());
                 data = JsonMessage.getJson("200", AppConfigurationHelper.getGson().toJson(arrBeans));
             } catch (Exception ex) {
                 ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getAll ERROR: " + ex.getMessage()));
@@ -171,8 +173,8 @@ public class ArticuloService {
             try {
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
-                DocumentoDao oDocumentoDao = new DocumentoDao(oConnection);
-                List<DocumentoBean> arrBeans = oDocumentoDao.getPage(intRegsPerPag, intPage, alFilter, hmOrder, AppConfigurationHelper.getJsonDepth());
+                ArticuloDao oArticuloDao = new ArticuloDao(oConnection);
+                List<ArticuloBean> arrBeans = oArticuloDao.getPage(intRegsPerPag, intPage, alFilter, hmOrder, AppConfigurationHelper.getJsonDepth());
                 data = JsonMessage.getJson("200", AppConfigurationHelper.getGson().toJson(arrBeans));
             } catch (Exception ex) {
                 ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getPage ERROR: " + ex.getMessage()));
@@ -201,8 +203,8 @@ public class ArticuloService {
             try {
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
-                DocumentoDao oDocumentoDao = new DocumentoDao(oConnection);
-                data = JsonMessage.getJson("200", Integer.toString(oDocumentoDao.getPages(intRegsPerPag, alFilter)));
+                ArticuloDao oArticuloDao = new ArticuloDao(oConnection);
+                data = JsonMessage.getJson("200", Integer.toString(oArticuloDao.getPages(intRegsPerPag, alFilter)));
             } catch (Exception ex) {
                 ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getPages ERROR: " + ex.getMessage()));
             } finally {
@@ -253,8 +255,8 @@ public class ArticuloService {
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
                 oConnection.setAutoCommit(false);
-                DocumentoDao oDocumentoDao = new DocumentoDao(oConnection);
-                resultado = JsonMessage.getJson("200", (String) oDocumentoDao.remove(id).toString());
+                ArticuloDao oArticuloDao = new ArticuloDao(oConnection);
+                resultado = JsonMessage.getJson("200", (String) oArticuloDao.remove(id).toString());
                 oConnection.commit();
             } catch (Exception ex) {
                 oConnection.rollback();
@@ -284,11 +286,11 @@ public class ArticuloService {
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
                 oConnection.setAutoCommit(false);
-                DocumentoDao oDocumentoDao = new DocumentoDao(oConnection);
-                DocumentoBean oDocumentoBean = new DocumentoBean();
-                oDocumentoBean = AppConfigurationHelper.getGson().fromJson(jason, oDocumentoBean.getClass());
-                if (oDocumentoBean != null) {
-                    Integer iResult = oDocumentoDao.set(oDocumentoBean);
+                ArticuloDao oArticuloDao = new ArticuloDao(oConnection);
+                ArticuloBean oArticuloBean = new ArticuloBean();
+                oArticuloBean = AppConfigurationHelper.getGson().fromJson(jason, oArticuloBean.getClass());
+                if (oArticuloBean != null) {
+                    Integer iResult = oArticuloDao.set(oArticuloBean);
                     if (iResult >= 1) {
                         resultado = JsonMessage.getJson("200", iResult.toString());
                     } else {
@@ -318,16 +320,16 @@ public class ArticuloService {
     public String getcontenido(Integer id) throws Exception {
         String data;
         Connection oConnection = null;
-        DocumentoBean oDocumentoBean;
+        ArticuloBean oArticuloBean;
         try {
             oConnection = new BoneConnectionPoolImpl().newConnection();
-            oDocumentoBean = new DocumentoBean(id);
-            DocumentoDao oDocumentoDao = new DocumentoDao(oConnection);
-            oDocumentoBean = oDocumentoDao.get(oDocumentoBean, AppConfigurationHelper.getJsonDepth());
+            oArticuloBean = new ArticuloBean(id);
+            ArticuloDao oArticuloDao = new ArticuloDao(oConnection);
+            oArticuloBean = oArticuloDao.get(oArticuloBean, AppConfigurationHelper.getJsonDepth());
         } catch (Exception e) {
             throw new ServletException(this.getClass().getName() + ":GetContenido: Error: " + e.getMessage());
         }
         oConnection.close();
-        return "{\"data\":\"" + oDocumentoBean.getContenido() + "\"}";
+        return "{\"data\":\"" + oArticuloBean.getDescripcion() + "\"}";
     }
 }
