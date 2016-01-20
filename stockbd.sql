@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 19-01-2016 a las 00:55:43
+-- Tiempo de generación: 20-01-2016 a las 02:57:07
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.5.29
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `articulo` (
   `id` int(11) NOT NULL,
-  `referencia` int(30) DEFAULT NULL,
+  `referencia` varchar(30) COLLATE utf8_unicode_520_ci DEFAULT NULL,
   `categoria` varchar(255) COLLATE utf8_unicode_520_ci DEFAULT NULL,
   `nombrearticulo` varchar(255) COLLATE utf8_unicode_520_ci DEFAULT NULL,
   `descripcion` varchar(255) COLLATE utf8_unicode_520_ci DEFAULT NULL,
@@ -37,7 +37,15 @@ CREATE TABLE IF NOT EXISTS `articulo` (
   `codigobarras` int(50) DEFAULT NULL,
   `color` varchar(255) COLLATE utf8_unicode_520_ci DEFAULT NULL,
   `marca` varchar(255) COLLATE utf8_unicode_520_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
+
+--
+-- Volcado de datos para la tabla `articulo`
+--
+
+INSERT INTO `articulo` (`id`, `referencia`, `categoria`, `nombrearticulo`, `descripcion`, `precio`, `cantidad`, `codigobarras`, `color`, `marca`) VALUES
+(1, 'QRFETA', 'camisetas', 'camiseta mayoral', 'talla 14', 13.99, 100, 8425346, 'azul', 'mayoral'),
+(2, 'KFTAHE', 'pantalones', 'pantalones chupachups niño', 'talla 12', 14.95, 50, 2147483647, 'negro', 'chupachups');
 
 -- --------------------------------------------------------
 
@@ -376,7 +384,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --

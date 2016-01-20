@@ -49,7 +49,7 @@ public class ArticuloBean {
     private Integer id;
     
     @Expose
-    private Integer referencia;
+    private String referencia;
 
     @Expose
     private String categoria = "";
@@ -91,11 +91,11 @@ public class ArticuloBean {
     }
 
     
-    public Integer getReferencia() {
+    public String getReferencia() {
         return referencia;
     }
 
-    public void setReferencia(Integer referencia) {
+    public void setReferencia(String referencia) {
         this.referencia = referencia;
     }
 
@@ -208,7 +208,7 @@ public class ArticuloBean {
 
     public ArticuloBean fill(ResultSet oResultSet, Connection pooledConnection, Integer expand) throws SQLException, Exception {
         this.setId(oResultSet.getInt("id"));
-        this.setReferencia(oResultSet.getInt("referencia"));
+        this.setReferencia(oResultSet.getString("referencia"));
         this.setCategoria(oResultSet.getString("categoria"));
         this.setNombrearticulo(oResultSet.getString("nombrearticulo"));
         this.setDescripcion(oResultSet.getString("descripcion"));
@@ -218,7 +218,15 @@ public class ArticuloBean {
         this.setColor(oResultSet.getString("color"));    
         this.setMarca(oResultSet.getString("marca"));        
 
-
+// if (expand > 0) {
+//            UsuarioBean oUsuarioBean = new UsuarioBean();
+//            UsuarioDao oUsuarioDao = new UsuarioDao(pooledConnection);
+//            oUsuarioBean.setId(oResultSet.getInt("id_usuario"));
+//            oUsuarioBean = oUsuarioDao.get(oUsuarioBean, expand - 1);
+//            this.setObj_usuario(oUsuarioBean);
+//        } else {
+//            this.setId_usuario(oResultSet.getInt("id_usuario"));
+//        }
    
         return this;
     }

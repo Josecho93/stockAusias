@@ -30,28 +30,26 @@
 'use strict';
 /* Controllers */
 
-moduloDocumento.controller('DocumentoPListController', ['$scope', '$routeParams', 'serverService', '$location',
+moduloArticulo.controller('ArticuloPListController', ['$scope', '$routeParams', 'serverService', '$location',
     function ($scope, $routeParams, serverService, $location) {
 
 
         $scope.visibles = {};
         $scope.visibles.id = true;
-        $scope.visibles.titulo = true;
-        $scope.visibles.contenido = true;
-        $scope.visibles.alta = true;
-        $scope.visibles.cambio = true;
-        $scope.visibles.hits = true;
-        $scope.visibles.id_usuario = true;
-        $scope.visibles.id_tipodocumento = true;
-        $scope.visibles.etiquetas = true;
-        $scope.visibles.publicado = true;
-        $scope.visibles.portada = true;
-        $scope.visibles.destacado = true;
+        $scope.visibles.referencia = true;
+        $scope.visibles.categoria = true;
+        $scope.visibles.nombrearticulo = true;
+        $scope.visibles.descripcion = true;
+        $scope.visibles.precio = true;
+        $scope.visibles.cantidad = true;
+        $scope.visibles.codigobarras = true;
+        $scope.visibles.color = true;
+        $scope.visibles.marca = true;
 
 
 
 
-        $scope.ob = "documento";
+        $scope.ob = "articulo";
         $scope.op = "plist";
         $scope.title = "Listado de productos";
         $scope.icon = "fa-archive";
@@ -194,25 +192,25 @@ moduloDocumento.controller('DocumentoPListController', ['$scope', '$routeParams'
             }
             return false;
         };
-        //$scope.$on('myApp.construirBotoneraPaginas', function () {
-        //    $scope.botoneraPaginas = serverService.getPaginationBar($scope.ob, $scope.op, $scope.page, $scope.pages, 2, $scope.rpp);
-        //})
-//
+//        $scope.$on('myApp.construirBotoneraPaginas', function () {
+//            $scope.botoneraPaginas = serverService.getPaginationBar($scope.ob, $scope.op, $scope.page, $scope.pages, 2, $scope.rpp);
+//        })
+////
 //        $scope.prettyFieldNames = serverService.getPrettyFieldNames($scope.ob).then(function (datos4) {
 //            datos4['data'].push('acciones');
 //            $scope.prettyFieldNames = datos4['data'];
 //        });
-//
+////
 //        $scope.clientes = serverService.getPage($scope.ob, $scope.page, null, null, $scope.rpp, null, null, null, null, null, null).then(function (datos3) {
 //            $scope.clientes = datos3['list'];
 //
 //        });
-//
+////
 //        $scope.fieldNames = serverService.getFieldNames($scope.ob).then(function (datos6) {
 //            $scope.fieldNames = datos6['data'];
 //            $scope.selectedFilterFieldName = null;
 //        });
-//
+////
 //
 //        $scope.$watch('numPagina', function () {
 //            $scope.$broadcast('myApp.construirPagina');
@@ -231,8 +229,8 @@ moduloDocumento.controller('DocumentoPListController', ['$scope', '$routeParams'
 //            alert("f")
 //
 //
-//        };
-
+////        };
+//
 // $scope.$watch('filteroperator', function () {
 //           console.log($scope.filter);
 //           console.log($scope.filteroperator);

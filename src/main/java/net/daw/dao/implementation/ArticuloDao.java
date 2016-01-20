@@ -40,8 +40,8 @@ import net.daw.helper.statics.SqlBuilder;
 
 public class ArticuloDao implements ViewDaoInterface<ArticuloBean>, TableDaoInterface<ArticuloBean> {
 
-    private String strTable = "documento";
-    private String strSQL = "select * from documento where 1=1 ";
+    private String strTable = "articulo";
+    private String strSQL = "select * from articulo where 1=1 ";
     private MysqlDataSpImpl oMysql = null;
     private Connection oConnection = null;
 
@@ -118,9 +118,9 @@ public class ArticuloDao implements ViewDaoInterface<ArticuloBean>, TableDaoInte
 
     @Override
     public ArticuloBean get(ArticuloBean oArticuloBean, Integer expand) throws Exception {
-        if (oArticuloBean.getReferencia()> 0) {
+        if (oArticuloBean.getId()> 0) {
             try {
-                ResultSet oResultSet = oMysql.getAllSql(strSQL + " And id= " + oArticuloBean.getReferencia() + " ");
+                ResultSet oResultSet = oMysql.getAllSql(strSQL + " And id= " + oArticuloBean.getId()+ " ");
                 if (oResultSet != null) {
                     while (oResultSet.next()) {
                         oArticuloBean = oArticuloBean.fill(oResultSet, oConnection, expand);
@@ -130,7 +130,7 @@ public class ArticuloDao implements ViewDaoInterface<ArticuloBean>, TableDaoInte
                 ExceptionBooster.boost(new Exception(this.getClass().getName() + ":get ERROR: " + ex.getMessage()));
             }
         } else {
-            oArticuloBean.setReferencia(0);
+            oArticuloBean.setId(0);
         }
         return oArticuloBean;
     }
@@ -139,7 +139,7 @@ public class ArticuloDao implements ViewDaoInterface<ArticuloBean>, TableDaoInte
     public Integer set(ArticuloBean oArticuloBean) throws Exception {
         Integer iResult = null;
         try {
-            if (oArticuloBean.getReferencia() == 0) {
+            if (oArticuloBean.getId()== 0) {
                 strSQL = "INSERT INTO " + strTable + " ";
                 strSQL += "(" + oArticuloBean.getColumns() + ")";
                 strSQL += "VALUES(" + oArticuloBean.getValues() + ")";
@@ -147,7 +147,7 @@ public class ArticuloDao implements ViewDaoInterface<ArticuloBean>, TableDaoInte
             } else {
                 strSQL = "UPDATE " + strTable + " ";
                 strSQL += " SET " + oArticuloBean.toPairs();
-                strSQL += " WHERE id=" + oArticuloBean.getReferencia();
+                strSQL += " WHERE id=" + oArticuloBean.getId();
                 iResult = oMysql.executeUpdateSQL(strSQL);
             }
 
