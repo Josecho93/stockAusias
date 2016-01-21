@@ -28,7 +28,7 @@
 
 
 'use strict';
-moduloArticulo.controller('DocumentoNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService',
+moduloArticulo.controller('ArticuloNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService',
     function ($scope, $routeParams, $location, serverService, sharedSpaceService) {
         $scope.id = $routeParams.id;
         $scope.ob = 'articulo';
@@ -39,10 +39,6 @@ moduloArticulo.controller('DocumentoNewController', ['$scope', '$routeParams', '
             $scope.obj = {
                 id: 0,
                 titulo: "",
-                contenido: "",
-                alta: "a",
-                cambio: "",
-                hits: 0,
                 id_tipodocumento: 0,
                 obj_tipodocumento: {
                     id: 0

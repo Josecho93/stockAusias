@@ -27,14 +27,14 @@
  */
 
 'use strict';
-moduloArticulo.controller('ArticuloEditController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter',
+moduloCategoria.controller('CategoriaEditController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter',
     function ($scope, $routeParams, $location, serverService, sharedSpaceService, $filter) {
         $scope.obj = null;
         $scope.id = $routeParams.id;
-        $scope.ob = 'articulo';
+        $scope.ob = 'categoria';
         $scope.result = null;
-        $scope.title = "Edición de producto";
-        $scope.icon = "fa-file-text-o";
+        $scope.title = "Edición de categoria";
+        $scope.icon = "fa-sitemap";
         if (sharedSpaceService.getFase() == 0) {
             serverService.getDataFromPromise(serverService.promise_getOne($scope.ob, $scope.id)).then(function (data) {
                 $scope.obj = data.message;
@@ -83,7 +83,7 @@ moduloArticulo.controller('ArticuloEditController', ['$scope', '$routeParams', '
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/articulo/plist');
+            $location.path('/categoria/plist');
         };
 
 

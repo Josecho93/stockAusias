@@ -183,10 +183,16 @@ public class ArticuloBean {
     public String getValues() {
         String strColumns = "";
         strColumns += id + ",";
-        strColumns += referencia + ",";
-        strColumns += categoria + ",";
-        strColumns += nombrearticulo + ",";
+        strColumns += EncodingUtilHelper.quotate(referencia) + ",";
+        strColumns += EncodingUtilHelper.quotate(categoria) + ",";
+        strColumns += EncodingUtilHelper.quotate(nombrearticulo) + ",";
+        strColumns += EncodingUtilHelper.quotate(descripcion) + ",";
+        strColumns += precio + ",";
         strColumns += cantidad + ",";
+        strColumns += codigobarras + ",";
+        strColumns += EncodingUtilHelper.quotate(color) + ",";
+        strColumns += EncodingUtilHelper.quotate(marca);
+
 
 
         return strColumns;
@@ -194,12 +200,11 @@ public class ArticuloBean {
 
 // Metodo para fechas, de momento no hace falta
     public String toPairs() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String strPairs = "";
         strPairs += "id=" + id + ",";
-        strPairs += "referencia=" + referencia + ",";
-        strPairs += "titulo=" + EncodingUtilHelper.quotate(categoria) + ",";
-        strPairs += "contenido=" + EncodingUtilHelper.quotate(nombrearticulo) + ",";
+        strPairs += "referencia=" + EncodingUtilHelper.quotate(referencia) + ",";
+        strPairs += "categoria=" + EncodingUtilHelper.quotate(categoria) + ",";
+        strPairs += "nombrearticulo=" + EncodingUtilHelper.quotate(nombrearticulo);
 
 
         return strPairs;
