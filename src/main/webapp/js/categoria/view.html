@@ -37,20 +37,13 @@ THE SOFTWARE.
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Referencia</td><td>{{bean.referencia}}</td></tr>       
-                    <tr><td>Categoria</td><td>{{bean.categoria}}</td></tr> 
-                    <tr><td>Nombre</td><td>{{bean.nombrearticulo}}</td></tr> 
-                    <tr><td>Descripcion</td><td>{{bean.descripcion}}</td></tr> 
-                    <tr><td>Precio</td><td>{{bean.precio}}</td></tr> 
-                    <tr><td>Cantidad</td><td>{{bean.cantidad}}</td></tr> 
-                    <tr><td>Codigo de barras</td><td>{{bean.codigobarras}}</td></tr> 
-                     <tr><td>Color</td><td>{{bean.color}}</td></tr> 
-                    <tr><td>Marca</td><td>{{bean.marca}}</td></tr> 
+                    <tr><td>Id</td><td>{{bean.id}}</td></tr>       
+                    <tr><td>Categoria</td><td>{{bean.nombrecategoria}}</td></tr> 
                 </tbody>
             </table>  
             <div class="text-right" > 
-                <a class="btn btn-primary" href="#/articulo/edit/{{bean.id}}">Editar</a>
-                <a class="btn btn-danger" href="#/articulo/remove/{{bean.id}}">Borrar</a>
+                <a class="btn btn-primary" href="#/categoria/edit/{{bean.id}}">Editar</a>
+                <a class="btn btn-danger" href="#/categoria/remove/{{bean.id}}">Borrar</a>
                    <a class="btn btn-default" ng-click="plist()">Ir al listado de productos</a>
                 <a class="btn btn-default" ng-click="close()">Cerrar</a>
             </div>

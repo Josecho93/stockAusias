@@ -31,11 +31,11 @@
 
 
 
-moduloArticulo.controller('ArticuloViewController', ['$scope', '$routeParams', 'serverService','$location',
+moduloCategoria.controller('CategoriaViewController', ['$scope', '$routeParams', 'serverService','$location',
     function ($scope, $routeParams, serverService,$location) {
-        $scope.title = "Vista de producto";
-        $scope.icon = "fa-file-text-o";
-        $scope.ob = 'articulo';
+        $scope.title = "Vista de categoria";
+        $scope.icon = "fa-file-sitemap";
+        $scope.ob = 'categoria';
         $scope.id = $routeParams.id;
         serverService.getDataFromPromise(serverService.promise_getOne($scope.ob, $scope.id)).then(function (data) {
             $scope.bean = data.message;
@@ -44,7 +44,7 @@ moduloArticulo.controller('ArticuloViewController', ['$scope', '$routeParams', '
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/articulo/plist');
+            $location.path('/categoria/plist');
         };
         $scope.back = function () {
             window.history.back();
