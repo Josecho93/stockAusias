@@ -1,10 +1,10 @@
-/* 
+/*
  * Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
  * 
  * openAUSIAS: The stunning micro-library that helps you to develop easily 
  *             AJAX web applications by using Java and jQuery
  * openAUSIAS is distributed under the MIT License (MIT)
- * Sources at https://github.com/rafaelaznar/
+ * Sources at https://github.com/rafaelaznar/openAUSIAS
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,33 +23,16 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- * 
  */
 
-'use strict';
-
-moduloDocumento.controller('DocumentoRemoveController', ['$scope', '$routeParams', 'serverService',
-    function ($scope, $routeParams, serverService) {
-        $scope.result = "";
-        
-        $scope.back = function () {
-            window.history.back();
-        };
-        $scope.ob = 'documento';
-        $scope.id = $routeParams.id;
-        $scope.title = "Borrado de un documento";
-        $scope.icon = "fa-file-text-o";
-        serverService.getDataFromPromise(serverService.promise_getOne($scope.ob, $scope.id)).then(function (data) {            
-            $scope.bean = data.message;
-        });
-
-
-
-        $scope.remove = function () {
-            serverService.getDataFromPromise(serverService.promise_removeOne($scope.ob, $scope.id)).then(function (data) {
-                $scope.result = data;
-                
-            });
-        }
-        ;
-    }]);
+var documentosautorList = function () {
+    var jsonData;
+}
+documentosautorList.prototype = new listModule();
+documentosautorList.prototype.loadButtons = function (rowValues, strClass) {
+    var botonera = "";
+    botonera += '<div class="btn-toolbar" role="toolbar"><div class="btn-group btn-group-xs">';
+    botonera += '<a class="btn btn-default view" id="' + rowValues[0].data + '"  href="#/autordocumento/plist/page=1&rpp=10&systemfilter' + rowValues[0].data + '"><i class="glyphicon glyphicon-eye-open"></i></a>';
+    botonera += '</div></div>';
+    return botonera;
+};

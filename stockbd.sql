@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 20-01-2016 a las 02:57:07
+-- Tiempo de generación: 20-01-2016 a las 16:37:47
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.5.29
 
@@ -56,7 +56,18 @@ INSERT INTO `articulo` (`id`, `referencia`, `categoria`, `nombrearticulo`, `desc
 CREATE TABLE IF NOT EXISTS `categoria` (
   `id_categoria` int(11) NOT NULL,
   `nombrecategoria` varchar(255) COLLATE utf8_unicode_520_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`id_categoria`, `nombrecategoria`) VALUES
+(1, 'Camisetas'),
+(2, 'Vestidos'),
+(3, 'Calzado'),
+(4, 'Complementos '),
+(5, 'Ropa de deporte');
 
 -- --------------------------------------------------------
 
@@ -389,7 +400,7 @@ ALTER TABLE `articulo`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `categoriaarticulo`
 --

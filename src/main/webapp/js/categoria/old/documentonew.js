@@ -2,9 +2,9 @@
  * Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
  * 
  * openAUSIAS: The stunning micro-library that helps you to develop easily 
- *             AJAX web applications by using Java and jQuery
+ * AJAX web applications by using Java and jQuery
  * openAUSIAS is distributed under the MIT License (MIT)
- * Sources at https://github.com/rafaelaznar/
+ * Sources at https://github.com/rafaelaznar/openAUSIAS
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,30 +26,10 @@
  * 
  */
 
-'use strict';
-
-moduloDocumento.controller('DocumentoRemoveController', ['$scope', '$routeParams', 'serverService',
-    function ($scope, $routeParams, serverService) {
-        $scope.result = "";
-        
-        $scope.back = function () {
-            window.history.back();
-        };
-        $scope.ob = 'documento';
-        $scope.id = $routeParams.id;
-        $scope.title = "Borrado de un documento";
-        $scope.icon = "fa-file-text-o";
-        serverService.getDataFromPromise(serverService.promise_getOne($scope.ob, $scope.id)).then(function (data) {            
-            $scope.bean = data.message;
-        });
-
-
-
-        $scope.remove = function () {
-            serverService.getDataFromPromise(serverService.promise_removeOne($scope.ob, $scope.id)).then(function (data) {
-                $scope.result = data;
-                
-            });
-        }
-        ;
-    }]);
+var documentoNew = function () {
+};
+documentoNew.prototype = new newModule();
+documentoNew.prototype.doEventsLoading = function () {
+    this.form_getForeign('documento','usuario');
+    this.form_getForeign('documento','tipodocumento');       
+};
