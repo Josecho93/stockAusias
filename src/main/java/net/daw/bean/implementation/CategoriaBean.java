@@ -47,7 +47,7 @@ public class CategoriaBean {
     private Integer id;
     
     @Expose
-    private String nombrecategoria;
+    private String nombrecategoria = "";
 
     
 
@@ -67,12 +67,12 @@ public class CategoriaBean {
     }
 
     
-    public String getReferencia() {
+    public String getnombrecategoria() {
         return nombrecategoria;
     }
 
-    public void setReferencia(String referencia) {
-        this.nombrecategoria = referencia;
+    public void setnombrecategoria(String nombrecategoria) {
+        this.nombrecategoria = nombrecategoria;
     }
 
     
@@ -81,7 +81,7 @@ public class CategoriaBean {
     public String getColumns() {
         String strColumns = "";
         strColumns += "id,";
-        strColumns += "referencia,";
+        strColumns += "nombrecategoria";
 
         return strColumns;
     }
@@ -101,7 +101,7 @@ public class CategoriaBean {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String strPairs = "";
         strPairs += "id=" + id + ",";
-        strPairs += "referencia=" + nombrecategoria;
+        strPairs += "categoria=" + nombrecategoria;
        
 
         return strPairs;
@@ -110,7 +110,7 @@ public class CategoriaBean {
 
     public CategoriaBean fill(ResultSet oResultSet, Connection pooledConnection, Integer expand) throws SQLException, Exception {
         this.setId(oResultSet.getInt("id"));
-        this.setReferencia(oResultSet.getString("referencia"));
+        this.setnombrecategoria(oResultSet.getString("nombrecategoria"));
     
 
 // if (expand > 0) {

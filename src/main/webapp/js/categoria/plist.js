@@ -30,28 +30,21 @@
 'use strict';
 /* Controllers */
 
-moduloArticulo.controller('ArticuloPListController', ['$scope', '$routeParams', 'serverService', '$location',
+moduloCategoria.controller('CategoriaPListController', ['$scope', '$routeParams', 'serverService', '$location',
     function ($scope, $routeParams, serverService, $location) {
 
 
         $scope.visibles = {};
         $scope.visibles.id = true;
-        $scope.visibles.referencia = true;
-        $scope.visibles.categoria = true;
-        $scope.visibles.nombrearticulo = true;
-        $scope.visibles.descripcion = true;
-        $scope.visibles.precio = true;
-        $scope.visibles.cantidad = true;
-        $scope.visibles.codigobarras = true;
-        $scope.visibles.color = true;
-        $scope.visibles.marca = true;
+        $scope.visibles.nombrecategoria = true;
 
 
 
 
-        $scope.ob = "articulo";
+
+        $scope.ob = "categoria";
         $scope.op = "plist";
-        $scope.title = "Listado de productos";
+        $scope.title = "Listado de categorias";
         $scope.icon = "fa-archive";
         $scope.neighbourhood = 2;
 

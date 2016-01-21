@@ -36,6 +36,7 @@ var openAusias = angular.module('myApp', [
     'systemControllers',
     'documentoControllers',
     'articuloControllers',
+    'categoriaControllers',
     'usuarioControllers',    
     'tipodocumentoControllers',
     'tipousuarioControllers',
@@ -75,7 +76,12 @@ openAusias.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/articulo/plist/:page?/:rpp?', {templateUrl: 'js/articulo/plist.html', controller: 'ArticuloPListController'});
 
         
-        
+        $routeProvider.when('/categoria/view/:id', {templateUrl: 'js/categoria/view.html', controller: 'CategoriaViewController'});
+        $routeProvider.when('/categoria/new', {templateUrl: 'js/categoria/new.html', controller: 'CategoriaNewController'});
+        $routeProvider.when('/categoria/edit/:id', {templateUrl: 'js/categoria/edit.html', controller: 'CategoriaEditController'});
+        $routeProvider.when('/categoria/remove/:id', {templateUrl: 'js/categoria/remove.html', controller: 'CategoriaRemoveController'});
+        $routeProvider.when('/categoria/plist/:page?/:rpp?', {templateUrl: 'js/categoria/plist.html', controller: 'CategoriaPListController'});
+ 
         
 //                    
 //        $routeProvider.when('/tipousuario/selection/:page/:rpp', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});        
@@ -90,6 +96,7 @@ openAusias.config(['$routeProvider', function ($routeProvider) {
 var moduloSistema = angular.module('systemControllers', []);
 var moduloUsuario = angular.module('usuarioControllers', []);
 var moduloDocumento = angular.module('documentoControllers', []);
+var moduloCategoria = angular.module('categoriaControllers', []);
 var moduloTipodocumento = angular.module('tipodocumentoControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);
 var moduloArticulo = angular.module('articuloControllers', []);
