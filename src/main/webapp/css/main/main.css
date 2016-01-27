@@ -1111,7 +1111,7 @@ body {
   font-size: 14px;
   line-height: 1.42857;
   /* color: #2f575d; */
-  background-color: #F7BE81;
+  background-color: #6B8883;
   }
 
 input,
@@ -3723,9 +3723,10 @@ tbody.collapse.in {
 .navbar-brand {
   float: left;
   padding: 15px 15px;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 20px;
-  height: 50px; }
+  height: 50px;
+  }
   .navbar-brand:hover, .navbar-brand:focus {
     text-decoration: none; }
   .navbar-brand > img {
@@ -3763,7 +3764,8 @@ tbody.collapse.in {
   .navbar-nav > li > a {
     padding-top: 10px;
     padding-bottom: 10px;
-    line-height: 20px; }
+    line-height: 20px;
+    }
   @media (max-width: 767px) {
     .navbar-nav .open .dropdown-menu {
       position: static;
@@ -3785,10 +3787,12 @@ tbody.collapse.in {
       float: left;
       margin: 0; }
       .navbar-nav > li {
+        margin-left: 22px;
         float: left; }
         .navbar-nav > li > a {
-          padding-top: 15px;
-          padding-bottom: 15px; } }
+          padding-top: 18px;
+          padding-bottom: 18px;
+          } }
 
 .navbar-form {
   margin-left: -15px;
@@ -3905,6 +3909,7 @@ tbody.collapse.in {
   .navbar-default .navbar-text {
     color: #777; }
   .navbar-default .navbar-nav > li > a {
+    font-size: 18px;
     color: #777; }
     .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
       color: #333;
