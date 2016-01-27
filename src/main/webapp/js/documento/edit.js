@@ -32,6 +32,7 @@ moduloDocumento.controller('DocumentoEditController', ['$scope', '$routeParams',
         $scope.obj = null;
         $scope.id = $routeParams.id;
         $scope.ob = 'documento';
+        $scope.op = 'edit';
         $scope.result = null;
         $scope.title = "Edición de documento";
         $scope.icon = "fa-file-text-o";
@@ -48,7 +49,7 @@ moduloDocumento.controller('DocumentoEditController', ['$scope', '$routeParams',
         }
         $scope.chooseOne = function (foreignObjectName) {
             sharedSpaceService.setObject($scope.obj);
-            sharedSpaceService.setReturnLink('/' + $scope.ob + '/edit/' + $scope.id);
+            sharedSpaceService.setReturnLink('/' + $scope.ob + '/' + $scope.op + '/' + $scope.id);
             sharedSpaceService.setFase(1);
             $location.path('/' + foreignObjectName + '/selection/1/10');
         }
@@ -87,24 +88,36 @@ moduloDocumento.controller('DocumentoEditController', ['$scope', '$routeParams',
         };
 
 
-        //datepicker
+       //datepickers
+        $scope.minDate = new Date(2016, 0, 1);
+        $scope.maxDate = new Date(2019, 11, 31);
+
+        //datepicker 1 (fecha de alta)
         $scope.open1 = function () {
             $scope.popup1.opened = true;
         };
         $scope.popup1 = {
             opened: false
         };
-        $scope.disabled = function (date, mode) {
-            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-        };
-        $scope.dateOptions = {
+        $scope.dateOptions1 = {
             formatYear: 'yyyy',
             startingDay: 1
         };
+
+        //datepicker 2 (fecha de alta)
         $scope.open2 = function () {
             $scope.popup2.opened = true;
         };
         $scope.popup2 = {
             opened: false
         };
+        $scope.dateOptions2 = {
+            formatYear: 'yyyy',
+            startingDay: 1
+        };
+
+
+//        $scope.disabled = function (date, mode) {
+//            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+//        };
     }]);

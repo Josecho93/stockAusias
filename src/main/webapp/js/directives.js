@@ -27,28 +27,78 @@
 
 'use strict';
 
-angular.module('Directives', []).
-        directive('appVersion', ['version', function (version) {
-                return function (scope, elm, attrs) {
-                    elm.text(version);
-                };
-            }]);
-angular.module('Directives', []).
-        directive('datetimez', function () {
+angular.module('Directives', [])
+
+
+        .directive('linkusuario', function () {
+            return {
+                restrict: 'E',
+                template: '<a ng-show="obj.id" href="#/usuario/view/{{obj.id}}">{{obj.id}} - {{obj.login}} ({{obj.ciudad}})</a>',
+                scope: {
+                    obj: "=source"
+                }
+            }
+        })
+        .directive('linktipodocumento', function () {
+            return {
+                restrict: 'E',
+                template: '<a ng-show="obj.id" href="#/tipodocumento/view/{{obj.id}}">{{obj.id}}-({{obj.descripcion}})</a>',
+                scope: {
+                    obj: "=source"
+                }
+            }
+        })
+
+
+        .directive('validatemin', function () {
             return {
                 restrict: 'A',
                 require: 'ngModel',
-                link: function (scope, element, attrs, ngModelCtrl) {
-                    element.datetimepicker({
-                        dateFormat: 'dd-MM-yyyy',
-                        language: 'en',
-                        pickTime: false,
-                        startDate: '01-11-2013', // set a minimum date
-                        endDate: '01-11-2030'          // set a maximum date
-                    }).on('changeDate', function (e) {
-                        ngModelCtrl.$setViewValue(e.date);
-                        scope.$apply();
+                link: function (scope, elem, attr, ctrl) {
+                    scope.$watch(attr.validatemin, function () {
+                        ctrl.$setViewValue(ctrl.$viewValue);
                     });
+                    var minValidator = function (value) {
+                        var min = scope.$eval(attr.validatemin) || 0;
+                        if (value && value < min) {
+                            ctrl.$setValidity('validatemin', false);
+                            return undefined;
+                        } else {
+                            ctrl.$setValidity('validatemin', true);
+                            return value;
+                        }
+                    };
+
+                    ctrl.$parsers.push(minValidator);
+                    ctrl.$formatters.push(minValidator);
+                }
+            };
+        })
+
+        .directive('validatemax', function () {
+            return {
+                restrict: 'A',
+                require: 'ngModel',
+                link: function (scope, elem, attr, ctrl) {
+                    scope.$watch(attr.validatemax, function () {
+                        ctrl.$setViewValue(ctrl.$viewValue);
+                    });
+                    var maxValidator = function (value) {
+                        var max = scope.$eval(attr.validatemax) || Infinity;
+                        if (value && value > max) {
+                            ctrl.$setValidity('validatemax', false);
+                            return undefined;
+                        } else {
+                            ctrl.$setValidity('validatemax', true);
+                            return value;
+                        }
+                    };
+
+                    ctrl.$parsers.push(maxValidator);
+                    ctrl.$formatters.push(maxValidator);
                 }
             };
         });
+
+
+

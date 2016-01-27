@@ -33,6 +33,7 @@ import java.sql.SQLException;
 import net.daw.bean.publicinterface.GenericBean;
 import net.daw.dao.implementation.EstadoDao;
 import net.daw.dao.implementation.TipousuarioDao;
+import net.daw.helper.statics.EncodingUtilHelper;
 
 public class UsuarioBean implements GenericBean{
 
