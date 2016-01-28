@@ -28,22 +28,18 @@
 
 
 'use strict';
-moduloArticulo.controller('DocumentoNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService',
+moduloCategoria.controller('CategoriaNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService',
     function ($scope, $routeParams, $location, serverService, sharedSpaceService) {
         $scope.id = $routeParams.id;
-        $scope.ob = 'articulo';
+        $scope.ob = 'categoria';
         $scope.result = null;
-        $scope.title = "Crear un nuevo articulo";
+        $scope.title = "Crear una nueva categoria";
         $scope.icon = "fa-file-text-o";
         if (sharedSpaceService.getFase() == 0) {
             $scope.obj = {
                 id: 0,
-                titulo: "",
-                contenido: "",
-                alta: "a",
-                cambio: "",
-                hits: 0,
-                id_tipodocumento: 0,
+                nombrecategoria: "",
+                
                 obj_tipodocumento: {
                     id: 0
                 },
@@ -91,7 +87,7 @@ moduloArticulo.controller('DocumentoNewController', ['$scope', '$routeParams', '
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/articulo/plist');
+            $location.path('/categoria/plist');
         };
 
 //        $("#alta_group").datetimepicker({format: "DD/MM/YYYY", locale: "es"});

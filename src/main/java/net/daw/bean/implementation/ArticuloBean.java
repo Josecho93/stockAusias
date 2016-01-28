@@ -204,7 +204,13 @@ public class ArticuloBean {
         strPairs += "id=" + id + ",";
         strPairs += "referencia=" + EncodingUtilHelper.quotate(referencia) + ",";
         strPairs += "categoria=" + EncodingUtilHelper.quotate(categoria) + ",";
-        strPairs += "nombrearticulo=" + EncodingUtilHelper.quotate(nombrearticulo);
+        strPairs += "nombrearticulo=" + EncodingUtilHelper.quotate(nombrearticulo) + ",";
+        strPairs += "descripcion=" + EncodingUtilHelper.quotate(descripcion) + ",";
+        strPairs += "precio=" + precio + ",";
+        strPairs += "cantidad=" + cantidad + ",";
+        strPairs += "codigobarras=" + codigobarras + ",";
+        strPairs += "color=" + EncodingUtilHelper.quotate(color) + ",";
+        strPairs += "marca=" + EncodingUtilHelper.quotate(marca);
 
 
         return strPairs;

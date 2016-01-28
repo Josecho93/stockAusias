@@ -33,84 +33,15 @@ THE SOFTWARE.
         <div id="id-group" class="form-group">
             <label class="col-sm-2 control-label" for="id">Identificador:</label>
             <div class="control col-sm-3">
-                <input ng-model="obj.id" type="text" id="id" class="form-control" name="id" size="15" placeholder="id" disabled="disabled">
+                <input ng-model="obj.id" type="text" id="id" class="form-control" name="id" size="15" placeholder="" disabled="disabled">
             </div>
         </div>
 
 
-        <div id="titulo-group" class="form-group">
-            <label class="col-sm-2 control-label" for="referencia">Referencia</label>
+        <div id="nombrecategoria-group" class="form-group">
+            <label class="col-sm-2 control-label" for="nombrecategoria">Nombre de la categoria:</label>
             <div class="control col-sm-2">
-                <input ng-model="obj.referencia" required type="text" id="referencia" 
-                       class="form-control" name="referencia" size="15" placeholder="referencia"
-                       ng-class="{error:!outerForm.$pristine && outerForm.referencia.$error.required}">
-            </div>
-            <!-- <span ng-show="!outerForm.$pristine && outerForm.titulo.$error.required">El campo nombre es obligatorio</span> -->
-        </div>
-
-
-        <div id="categoria-group" class="form-group">
-            <label class="col-sm-2 control-label" for="categoria">Categoria</label>
-            <div class="control col-sm-2">
-                <input ng-model="obj.categoria" type="text" id="categoria" class="form-control" name="categoria" size="15" placeholder="categoria">
-            </div>
-        </div>
-
-        <div id="alta-group" class="form-group">
-            <label class="col-sm-2 control-label" for="nombrearticulo">Nombre de articulo:</label>
-            <div class="control col-sm-3">
-                <input ng-model="obj.nombrearticulo" type="text" id="nombrearticulo" class="form-control" name="nombrearticulo" size="15" placeholder="nombrearticulo">
-
-            </div>
-        </div>
-
-
-        <div id="descripcion-group" class="form-group">
-            <label class="col-sm-2 control-label" for="descripcion">Descripción:</label>
-            <div class="control col-sm-6">
-                <div class="input-group date" id="descripcion_group">
-                      <input ng-model="obj.descripcion" type="text" id="descripcion" class="form-control" name="descripcion" size="15" placeholder="descripcion">
-                </div>
-            </div>
-        </div>     
-
-
-        <div id="precio-group" class="form-group">
-            <label class="col-sm-2 control-label" for="precio">Precio:</label>
-            <div class="control col-sm-1">
-                <input ng-model="obj.precio" type="text" id="precio" class="form-control" name="precio" size="15" placeholder="precio">
-            </div>
-        </div>
-
-
-        <div id="cantidad-group" class="form-group">
-            <label class="col-sm-2 control-label" for="cantidad">Cantidad:</label>
-            <div class="control col-sm-1">
-                <input ng-model="obj.cantidad" type="text" id="cantidad" class="form-control" name="cantidad" size="15" placeholder="cantidad">
-            </div>
-        </div>
-
-
-        <div id="codigobarras-group" class="form-group">
-            <label class="col-sm-2 control-label" for="codigobarras">Codigo de barras</label>
-            <div class="control col-sm-2">
-                <input ng-model="obj.codigobarras" type="text" id="codigobarras" class="form-control" name="codigobarras" size="15" placeholder="codigobarras">
-            </div>
-        </div>
-
-
-        <div id="color-group" class="form-group">
-            <label class="col-sm-2 control-label" for="color">Color</label>
-            <div class="control col-sm-2">
-                <input ng-model="obj.color" type="text" id="color" class="form-control" name="color" size="15" placeholder="color">
-            </div>
-        </div>
-
-
-        <div id="marca-group" class="form-group">
-            <label class="col-sm-2 control-label" for="marca">Marca o fabricante:</label>
-            <div class="control col-sm-2">
-                <input ng-model="obj.marca" type="text" id="marca" class="form-control" name="marca" size="15" placeholder="marca">
+                <input ng-model="obj.nombrecategoria" type="text" id="nombrecategoria" class="form-control" name="nombrecategoria" size="15" placeholder="">
             </div>
         </div>
         

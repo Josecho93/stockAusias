@@ -62,13 +62,7 @@ moduloArticulo.controller('ArticuloEditController', ['$scope', '$routeParams', '
                 $scope.result = data;
             });
         };
-        $scope.$watch('obj.obj_tipodocumento.id', function () {
-            if ($scope.obj) {
-                serverService.getDataFromPromise(serverService.promise_getOne('tipodocumento', $scope.obj.obj_tipodocumento.id)).then(function (data2) {
-                    $scope.obj.obj_tipodocumento = data2.message;
-                });
-            }
-        });
+
         $scope.$watch('obj.obj_usuario.id', function () {
             if ($scope.obj) {
                 serverService.getDataFromPromise(serverService.promise_getOne('usuario', $scope.obj.obj_usuario.id)).then(function (data2) {

@@ -89,7 +89,7 @@ public class CategoriaBean {
     public String getValues() {
         String strColumns = "";
         strColumns += id + ",";
-        strColumns += nombrecategoria;
+        strColumns += EncodingUtilHelper.quotate(nombrecategoria);
 
 
 
@@ -98,10 +98,9 @@ public class CategoriaBean {
 
 // Metodo para fechas, de momento no hace falta
     public String toPairs() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String strPairs = "";
         strPairs += "id=" + id + ",";
-        strPairs += "categoria=" + nombrecategoria;
+        strPairs += "categoria=" + EncodingUtilHelper.quotate(nombrecategoria);
        
 
         return strPairs;
